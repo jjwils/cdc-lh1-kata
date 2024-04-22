@@ -12,10 +12,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import train.the.trainer.samirs_taxi.models.Customer;
+import train.the.trainer.samirs_taxi.models.Job;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
 @SpringBootTest
 @ExtendWith(PactConsumerTestExt.class)
@@ -29,21 +30,21 @@ class JobServiceClientPactTest {
     return builder
             .given("a job exists")
             .uponReceiving("get job")
-            .path("TODO")
+            .path("/job")
             .willRespondWith()
-            .status(-1)//CHANGE THIS TO THE INT FOR HTTP.OK
+            .status(200)//CHANGE THIS TO THE INT FOR HTTP.OK
             .body(
                     new PactDslJsonBody()
-                            .object("TODO", new PactDslJsonBody()
-                                    .stringType("TODO", "TODO")
-                                    .stringType("TODO", "TODO")
-                                    .stringType("TODO", "TODO")
+                            .object("customer", new PactDslJsonBody()
+                                    .stringType("firstName", "Prince")
+                                    .stringType("lastName", "Ali")
+                                    .stringType("phoneNumber", "07456978900")
                             )
-                            .stringType("TODO", "TODO")
-                            .stringType("TODO", "TODO")
-                            .stringType("TODO", "TODO")
-                            .stringType("TODO", "TODO")
-                            .booleanType("TODO", false)
+                            .stringType("startLatitude", "53.35612531404332")
+                            .stringType("startLongitude", "-2.277333661375856")
+                            .stringType("endLatitude", "53.48064143725981")
+                            .stringType("endLongitude", "-2.2423585050324775")
+                            .booleanType("return", false)
             )
             .toPact();
   }
@@ -51,7 +52,16 @@ class JobServiceClientPactTest {
   @Test
   @PactTestFor(pactMethod = "getJob", pactVersion = PactSpecVersion.V3)
   void should_get_job(MockServer mockServer) {
-    //TODO Step 2
+    jobServiceClient.setBaseUrl(mockServer.getUrl());
+    Job job = jobServiceClient.getJob();
+    assertThat(job, is(equalTo(new Job(
+            new Customer("TODO", "TODO", "TODO"),
+            "TODO",
+            "TODO",
+            "TODO",
+            "TODO",
+            false
+    ))));
   }
 
 }
