@@ -27,7 +27,6 @@ class JobServiceClientPactTest {
   @Autowired
   private JobServiceClient jobServiceClient;
 
-
   @Pact(consumer = "SamirsApp")
   public RequestResponsePact getJob(PactDslWithProvider builder) {
     return builder
@@ -54,7 +53,7 @@ class JobServiceClientPactTest {
 
   @Test
   @PactTestFor(pactMethod = "getJob", pactVersion = PactSpecVersion.V3)
-  void testSingleProduct(MockServer mockServer) {
+  void should_get_job(MockServer mockServer) {
     jobServiceClient.setBaseUrl(mockServer.getUrl());
     Job job = jobServiceClient.getJob();
     assertThat(job, is(equalTo(new Job(
