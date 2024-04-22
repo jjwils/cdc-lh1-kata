@@ -30,39 +30,31 @@ class JobServiceClientPactTest {
   @Pact(consumer = "SamirsApp")
   public RequestResponsePact getJob(PactDslWithProvider builder) {
     return builder
-      .given("a job exists")
-      .uponReceiving("get job")
-        .path("/job")
-      .willRespondWith()
-        .status(200)
-        .body(
-          new PactDslJsonBody()
-                        .object("customer", new PactDslJsonBody()
-                                .stringType("firstName", "Prince")
-                                .stringType("lastName", "Ali")
-                                .stringType("phoneNumber", "07456978900")
-                        )
-                        .stringType("startLatitude", "53.35612531404332")
-                        .stringType("startLongitude", "-2.277333661375856")
-                        .stringType("endLatitude", "53.48064143725981")
-                        .stringType("endLongitude", "-2.2423585050324775")
-                        .booleanType("return", false)
-        )
-      .toPact();
+            .given("a job exists")
+            .uponReceiving("get job")
+            .path("TODO")
+            .willRespondWith()
+            .status(-1)//CHANGE THIS TO THE INT FOR HTTP.OK
+            .body(
+                    new PactDslJsonBody()
+                            .object("TODO", new PactDslJsonBody()
+                                    .stringType("TODO", "TODO")
+                                    .stringType("TODO", "TODO")
+                                    .stringType("TODO", "TODO")
+                            )
+                            .stringType("TODO", "TODO")
+                            .stringType("TODO", "TODO")
+                            .stringType("TODO", "TODO")
+                            .stringType("TODO", "TODO")
+                            .booleanType("TODO", false)
+            )
+            .toPact();
   }
 
   @Test
   @PactTestFor(pactMethod = "getJob", pactVersion = PactSpecVersion.V3)
   void should_get_job(MockServer mockServer) {
-    jobServiceClient.setBaseUrl(mockServer.getUrl());
-    Job job = jobServiceClient.getJob();
-    assertThat(job, is(equalTo(new Job(
-            new Customer("Prince", "Ali", "07456978900"),
-            "53.35612531404332",
-            "-2.277333661375856",
-            "53.48064143725981",
-            "-2.2423585050324775",
-            false
-            ))));
+    //TODO Step 2
   }
+
 }
