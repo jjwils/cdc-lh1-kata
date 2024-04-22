@@ -1,4 +1,4 @@
-package io.pact.workshop.product_catalogue;
+package train.the.trainer.samirs_taxi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

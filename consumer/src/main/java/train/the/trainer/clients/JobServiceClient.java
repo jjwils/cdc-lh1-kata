@@ -1,6 +1,6 @@
-package io.pact.workshop.product_catalogue.clients;
+package train.the.trainer.clients;
 
-import io.pact.workshop.product_catalogue.models.Job;
+import train.the.trainer.samirs_taxi.models.Job;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
-package io.pact.workshop.product_catalogue.clients;
+package train.the.trainer.clients;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import io.pact.workshop.product_catalogue.models.Customer;
-import io.pact.workshop.product_catalogue.models.Job;
+import train.the.trainer.samirs_taxi.models.Customer;
+import train.the.trainer.samirs_taxi.models.Job;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

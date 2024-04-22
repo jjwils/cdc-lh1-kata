@@ -1,4 +1,4 @@
-package io.pact.workshop.product_catalogue.models;
+package train.the.trainer.samirs_taxi.models;
 
 import lombok.Data;
 
