@@ -3,7 +3,7 @@ package io.pact.workshop.product_catalogue.models;
 import lombok.Data;
 
 @Data
-public class JourneyData {
+public class job {
     private Customer customer;
     private String startLatitude;
     private String startLongitude;
