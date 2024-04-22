@@ -32,7 +32,7 @@ class JobServiceClientPactTest {
             .uponReceiving("get job")
             .path("/job")
             .willRespondWith()
-            .status(200)//CHANGE THIS TO THE INT FOR HTTP.OK
+            .status(200)
             .body(
                     new PactDslJsonBody()
                             .object("customer", new PactDslJsonBody()
@@ -55,11 +55,11 @@ class JobServiceClientPactTest {
     jobServiceClient.setBaseUrl(mockServer.getUrl());
     Job job = jobServiceClient.getJob();
     assertThat(job, is(equalTo(new Job(
-            new Customer("TODO", "TODO", "TODO"),
-            "TODO",
-            "TODO",
-            "TODO",
-            "TODO",
+            new Customer("Prince", "Ali", "07456978900"),
+            "53.35612531404332",
+            "-2.277333661375856",
+            "53.48064143725981",
+            "-2.2423585050324775",
             false
     ))));
   }
