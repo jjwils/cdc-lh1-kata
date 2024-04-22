@@ -1,4 +1,4 @@
-package train.the.trainer.samirs_taxi;
+package train.the.trainer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
