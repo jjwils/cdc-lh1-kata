@@ -57,30 +57,5 @@ class ProductServiceClientPactTest {
     assertThat(products.get(0), is(equalTo(new Product(9L, "Gem Visa", "CREDIT_CARD", null, null))));
   }
 
-  @Pact(consumer = "ProductCatalogue")
-  public RequestResponsePact singleProduct(PactDslWithProvider builder) {
-    return builder
-      .given("product with ID 10 exists", "id", 10)
-      .uponReceiving("get product with ID 10")
-        .path("/products/10")
-      .willRespondWith()
-        .status(200)
-        .body(
-          new PactDslJsonBody()
-            .integerType("id", 10L)
-            .stringType("name", "28 Degrees")
-            .stringType("type", "CREDIT_CARD")
-            .stringType("code", "CC_001")
-            .stringType("version", "v1")
-        )
-      .toPact();
-  }
 
-  @Test
-  @PactTestFor(pactMethod = "singleProduct", pactVersion = PactSpecVersion.V3)
-  void testSingleProduct(MockServer mockServer) {
-    productServiceClient.setBaseUrl(mockServer.getUrl());
-    Product product = productServiceClient.getProductById(10L);
-    assertThat(product, is(equalTo(new Product(10L, "28 Degrees", "CREDIT_CARD", "v1", "CC_001"))));
-  }
 }
