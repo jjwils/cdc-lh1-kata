@@ -32,7 +32,7 @@ class JobServiceClientPactTest {
             .uponReceiving("get job")
             .path("/job")
             .willRespondWith()
-            .status(200)//CHANGE THIS TO THE INT FOR HTTP.OK
+            .status(200)
             .body(
                     new PactDslJsonBody()
                             .object("customer", new PactDslJsonBody()
