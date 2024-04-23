@@ -1,16 +1,21 @@
-# Pact Maven + Springboot + JUnit5 workshop
+# Contract Testing Learning Hour 1
 
-## Introduction
+## Consumer Driven Contract Testing
 
-This workshop is aimed at demonstrating core features and benefits of contract testing with Pact.
+This workshop is aimed at deliberately practicing producing a consumer driven contract using Pact.
 
-Whilst contract testing can be applied retrospectively to systems, we will follow the [consumer driven contracts](https://martinfowler.com/articles/consumerDrivenContracts.html) approach in this workshop - where a new consumer and provider are created in parallel to evolve a service over time, especially where there is some uncertainty with what is to be built.
+Whilst contract testing can be applied retrospectively to already existing systems 
+(you may want to consider bi-directional contract testing for those use cases), we will follow the 
+[consumer driven contracts](https://martinfowler.com/articles/consumerDrivenContracts.html) approach in this kata - where a new consumer "goes first" producing 
+a contract that the provider will use to TDD the endpoints in their service in parallel.  
+Both parties can then be sure that they have built exactly what each other was expecting 
+making integration or e2e testing between the real services a formality.
 
 This workshop should take from 1 to 2 hours, depending on how deep you want to go into each topic.
 
 **Workshop outline**:
 
-- [step 1: **create consumer**](https://github.com/pact-foundation/pact-workshop-Maven-Springboot-JUnit5/tree/step1#step-1---simple-consumer-calling-provider): Create our consumer before the Provider API even exists
+- [step 1: **Define the expectation of the provider**](https://github.com/jjwils/cdc-lh1-kata/tree/step1#step-1---simple-consumer-calling-provider): Define the provider API in a test in our Consumer codebase.
 - [step 2: **unit test**](https://github.com/pact-foundation/pact-workshop-Maven-Springboot-JUnit5/tree/step2#step-2---client-tested-but-integration-fails): Write a unit test for our consumer
 - [step 3: **pact test**](https://github.com/pact-foundation/pact-workshop-Maven-Springboot-JUnit5/tree/step3#step-3---pact-to-the-rescue): Write a Pact test for our consumer
 - [step 4: **pact verification**](https://github.com/pact-foundation/pact-workshop-Maven-Springboot-JUnit5/tree/step4#step-4---verify-the-provider): Verify the consumer pact with the Provider API
@@ -32,7 +37,6 @@ If running this as a team workshop format, you may want to take a look through t
 
 - JDK 17+
 - Maven 3+
-- Docker for step 11
 
 ## Scenario
 
@@ -41,7 +45,46 @@ There are two components in scope for our workshop.
 1. Product Catalog website. It provides an interface to query the Product service for product information.
 1. Product Service (Provider). Provides useful things about products, such as listing all products and getting the details of an individual product.
 
-## Step 1 - Simple Consumer calling Provider
+## Step 1 - Define the expectation of the provider
+
+*Provider states* is an important concept of Pact that we need to introduce. These states define the state that the provider should be in for specific interactions. For the moment, we will initially be testing the following state that 
+is defined in the ```.given("a job exists")``` on line 4 below.
+You can think of this as the *Given* step in *Given, When, Then* and is where *us the consumer* are designing the API of the provider *before it even exists*.
+
+Your task is to fill out the TODO's below to create the API we want from the provider to meet Samir's expected response.
+
+*Hint* - have a look at the traditional integration test in the JobServiceClientTest class.
+
+
+```java
+@Pact(consumer = "SamirsApp")
+public RequestResponsePact getJob(PactDslWithProvider builder) {
+return builder
+.given("a job exists")
+.uponReceiving("get job")
+.path("TODO")
+.willRespondWith()
+.status(-1)//CHANGE THIS TO THE INT FOR HTTP.OK
+.body(
+new PactDslJsonBody()
+.object("TODO", new PactDslJsonBody()
+.stringType("TODO", "TODO")
+.stringType("TODO", "TODO")
+.stringType("TODO", "TODO")
+)
+.stringType("TODO", "TODO")
+.stringType("TODO", "TODO")
+.stringType("TODO", "TODO")
+.stringType("TODO", "TODO")
+.booleanType("TODO", false)
+)
+.toPact();
+}
+```
+
+
+
+
 
 We need to first create an HTTP client to make the calls to our provider service:
 

@@ -11,6 +11,7 @@ import ru.lanwen.wiremock.ext.WiremockResolver;
 import ru.lanwen.wiremock.ext.WiremockResolver.Wiremock;
 import ru.lanwen.wiremock.ext.WiremockUriResolver;
 import ru.lanwen.wiremock.ext.WiremockUriResolver.WiremockUri;
+import train.the.trainer.samirs_taxi.clients.JobServiceClient;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
