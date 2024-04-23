@@ -16,7 +16,7 @@ making integration or e2e testing between the real services a *"no surprises end
 
 - [step 1: **Define the expectation of the provider**](https://github.com/jjwils/cdc-lh1-kata/tree/samirs-taxi-step1#step-1---define-the-expectation-of-the-provider): Define the provider API in a test in our Consumer codebase.
 - [step 2: **Write a test against the mock provider**](https://github.com/jjwils/cdc-lh1-kata/tree/samirs-taxi-step2#step-2---write-a-test-against-the-mock-providers): Write a test against the mock provider
-- [step 3: **Run the test and produce a contract**](https://github.com/jjwils/cdc-lh1-kata/tree/samirs-taxi-step-3#step-3---run-the-test-and-produce-a-contract): Run the test and produce a contract
+- [step 3: **Run the test and produce a contract**](https://github.com/jjwils/cdc-lh1-kata/tree/samirs-taxi-step3#step-3---run-the-test-and-produce-a-contract): Run the test and produce a contract
 
 
 _NOTE: Each step is tied to, and must be run within, a git branch, allowing you to progress through each stage incrementally. For example, to move to step 2 run the following: `git checkout samirs-taxi-step2`_
@@ -118,6 +118,6 @@ void should_get_job(MockServer mockServer) {
 ```
 
 
-*Move on to [step 3](https://github.com/jjwils/cdc-lh1-kata/tree/samirs-taxi-step-3#step-3---run-the-test-and-produce-a-contract)*
+*Move on to [step 3](https://github.com/jjwils/cdc-lh1-kata/tree/samirs-taxi-step3#step-3---run-the-test-and-produce-a-contract)*
 
 
