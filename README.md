@@ -6,7 +6,7 @@ This code Koan is aimed at deliberately practicing developing a consumer driven 
 
 Whilst contract testing can be applied retrospectively to already existing systems 
 (*note: you may want to consider bi-directional contract testing for those use cases*), we will follow the 
-[consumer driven contracts](https://martinfowler.com/articles/consumerDrivenContracts.html) approach in this kata - where a new consumer "goes first" producing 
+[consumer driven contracts](https://martinfowler.com/articles/consumerDrivenContracts.html) approach in this kata - where a new consumer "goes first", producing 
 a contract that the provider will use to TDD the endpoints in their service in parallel.  
 Both parties can then be sure that they have built exactly what each other was expecting 
 making integration or e2e testing between the real services a *"no surprises endgame"*.
@@ -16,7 +16,7 @@ making integration or e2e testing between the real services a *"no surprises end
 
 - [step 1: **Define the expectation of the provider**](https://github.com/jjwils/cdc-lh1-kata/tree/samirs-taxi-step1#step-1---define-the-expectation-of-the-provider): Define the provider API in a test in our Consumer codebase.
 - [step 2: **Write a test against the mock provider**](https://github.com/jjwils/cdc-lh1-kata/tree/samirs-taxi-step2#step-2---write-a-test-against-the-mock-providers): Write a test against the mock provider
-- [step 3: **Run the test and produce a contract**](https://github.com/jjwils/cdc-lh1-kata/tree/samirs-taxi-step3#step-3---run-the-test-and-produce-a-contract): Run the test and produce a contract
+- [step 3: **Run the test and produce a contract**](https://github.com/jjwils/cdc-lh1-kata/tree/samirs-taxi-step-3#step-3---run-the-test-and-produce-a-contract): Run the test and produce a contract
 
 
 _NOTE: Each step is tied to, and must be run within, a git branch, allowing you to progress through each stage incrementally. For example, to move to step 2 run the following: `git checkout samirs-taxi-step2`_
@@ -30,13 +30,14 @@ _NOTE: Each step is tied to, and must be run within, a git branch, allowing you 
 
 ![](MarkDownImages/taxiImg.png)
 
-*Samir loves driving his new car so much that he wants to start his own taxi business. He creates an application to keep track of his business.**
+*Samir loves driving his new car so much that he wants to start his own taxi business. He creates an application to keep track of his business.*
 
-He agrees a partnership with a firm that will send him his next job when he calls an API at /job.  Luckily the firm knows all about pact and consumer driven contracts.
+He agrees a partnership with a firm that will advertise his service and find jobs for him and make them available via an API.  
+
+Luckily the firm knows all about pact and consumer driven contracts.
 The first task is to create a contract that we can send to the firm so they can start developing their job API.
-from the firm.
 
-Here is the request that Samir decides they want to receive.
+Here is the request that Samir decides he wants to receive when he hits a ```/job``` endpoint.
 ``` 
 {
   "customer": {
